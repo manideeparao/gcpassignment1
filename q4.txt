@@ -1,0 +1,3 @@
+create a service account.I created service account named my-manideepa-account.
+Add a role to service account(storage obj viewer)
+create a vm instance with service account as the above created service account.

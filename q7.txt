@@ -1,0 +1,6 @@
+create a IAM role in logging as logging configuration writer.
+In logging exports section,create export with sink-name as something(sink-munny) and sink destination as bigquery.
+create a bigquery dataset with a name(munny28)
+and in create export give sink destination as name of the dataset(munny28)
+now,when you create export,the loginfo of firewall rules goes to bigquery dataset.
+go to bigquery and view the logging view in the tables created and all the logs in preview.

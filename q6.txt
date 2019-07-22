@@ -1,0 +1,24 @@
+create a vpc with some name.
+And make Subnet creation mode=Automatic.
+Automatic to create a subnet in each region,Custom to manually define the subnets.
+Create a vpc.
+Now,add firewall rules as inbound rules which allow only Quantiphi IP addresses.
+And in protocol,add ssh in tcp and provide port as 22.
+This firewall rule allows ssh access from only Quantiphi's IP addresses.
+In source IP ranges,give all these IP's:
+
+Eureka:
+59.152.53.168/30
+59.152.53.104/29
+59.152.53.200/29
+59.152.53.120/29
+
+Quantum:
+59.152.52.104/29
+59.152.52.152/29
+59.152.52.172/30
+
+Bengaluru:
+202.122.21.69/32
+
+

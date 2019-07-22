@@ -1,0 +1,34 @@
+CREATE NEW CONFIGURATION USING FOLLOWING COMMAND:
+
+gcloud config configurations create <configuration_name>
+gcloud config configurations create munny
+
+TO VIEW ALL THE CONFIGURATIONS
+
+gcloud config configurations list
+
+TO INITIALISE A CONFIGURATION
+
+gcloud init
+
+After running gcloud init,you will be asked to login\
+In the current configuration,create a project.
+
+gcloud config set project <name>
+gcloud config set project munny28
+
+The project i have created is munny28
+
+NOW,TO ACTIVATE THE CREATED CONFIGURATION
+
+gcloud config configurations activate <configuration_name>
+gcloud config configurations activate munny
+
+TO DELETE A CONFIGURATION
+
+gcloud config configurations delete <configuration_name>
+
+TO LIST DETAILS OF CURRENT CONFIGURATION
+
+gcloud config list
+

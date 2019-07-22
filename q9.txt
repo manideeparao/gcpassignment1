@@ -1,0 +1,40 @@
+
+import base64
+from google.cloud import bigquery
+
+def hello_pubsub(event, context):
+    pubsub_msg = str(base64.b64decode(event['data']).decode('utf-8')) # pubsub_msg = "bucketname objectpath"
+    pubsub_msglist = pubsub_msg.split(' ') # pubsub_msglist = ['bucketname', 'objectpath']
+    bucketname = pubsub_msglist[0]  # storing the bucket name in a variable
+    objectpath = pubsub_msglist[1]  # storing the objectpath in a variable
+    
+    client = bigquery.Client()
+
+    dataset_ref = client.dataset('gcp_ys')  # Creating a variable for dataset_ref = client.dataset(dataset_id)
+
+    # Specifying the Job configuration of BigQuery 
+    job_config = bigquery.LoadJobConfig()
+    
+    job_config.autodetect = True        # Auto Detects the schema of the table to be created
+    job_config.source_format = bigquery.SourceFormat.NEWLINE_DELIMITED_JSON     # source_format = JSON
+
+    uri = 'gs://{}/{}'.format(bucketname, objectpath)   # JSON Object URI 'gs://{bucketname}/{objectpath}'
+    print("Uri : {}".format(uri))
+    load_job = client.load_table_from_uri(
+        uri,                            # URI from which the JSON should data source should be taken
+        dataset_ref.table("bunny"),   # Table name on to which the data should load
+        location="US",                  # Location must match that of the destination dataset.
+        job_config=job_config           # giving the specified job_config
+    )
+
+    print("Starting job {}".format(load_job.job_id))
+    load_job.result()       # Waits for table load to complete.
+    print("Job finished.")
+
+    destination_table = client.get_table(dataset_ref.table("bunny"))  # Getting the table object with table name
+    print("Loaded {} rows.".format(destination_table.num_rows))         # Printing the table rows of the table
+
+
+
+
+

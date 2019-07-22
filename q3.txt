@@ -1,0 +1,5 @@
+To view available APIs
+gcloud services list --available
+
+To view enabled APIs
+gcloud services list

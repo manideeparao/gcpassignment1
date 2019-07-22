@@ -1,0 +1,14 @@
+install google cloud sdk in local machine.
+
+run the following command:
+gcloud components list.
+
+It displays all the components and mentions whether they are installed or not.
+install the uninstalled ones.
+
+gcloud components install <componentid>
+gcloud components install alpha
+gcloud components install beta
+gcloud components install kubectl
+gcloud components install bq
+gcloud components install gsutil

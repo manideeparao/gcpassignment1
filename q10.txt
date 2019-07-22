@@ -1,0 +1,9 @@
+create a GCE Vm instance(munny2228) and allow HTTP traffic and open it through SSH and run command to install apache2 server
+sudo apt-get update && sudo apt-get install apache2 -y
+
+And now,go to Stackdriver Monitoring API through console and go to alerting page.
+Now,create an alerting policy (munny2228 policy) and add a condition and a uptime check(munnycheck).
+Now,add notification channel(your emailid).
+You can add some optional docummentation.
+
+When events trigger conditions in one of your alerting policies, Stackdriver Monitoring creates and displays an incident in the Stackdriver Monitoring console. If you set up notifications, Stackdriver Monitoring also sends notifications to people or third-party notification services(our emailid in this case) 
